@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.googlecode.cmake-maven-project</groupId>
+		<artifactId>cmake</artifactId>
+		<version>3.16.3-b2-SNAPSHOT</version>
+	</parent>
+	<artifactId>cmake-binaries</artifactId>
+	<name>CMake Binaries</name>
+	<description>CMake Binaries</description>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>cmake-binaries-plugin</artifactId>
+				<version>${project.version}</version>
+				<executions>
+					<execution>
+						<id>cmake-binaries</id>
+						<goals>
+							<goal>get-binaries</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-jar</id>
+					</execution>
+					<execution>
+						<id>platform-specific-jar</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<classifier>${platform}</classifier>
+							<classesDirectory>${project.build.directory}/dependency/cmake</classesDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>deploy</id>
+			<!-- Deploy an empty main-jar to satisfy Sonatype's staging rules. -->
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-jar-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>main-jar</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+								<configuration>
+									<excludes>**</excludes>
+									<classesDirectory>${project.build.directory}/dependency/cmake</classesDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
