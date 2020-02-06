@@ -2,13 +2,13 @@
 
 ## Introduction
 
-A Maven project for the CMake build system. It can be used by including it as a plugin within your Maven project's pom.xml file.
+Um projeto Maven para o sistema de construção CMake. O CMake pode ser integrado ao seu projeto JAVA JNI através do pom.xml do Maven.
 
-This repository [originally lived](https://code.google.com/p/cmake-maven-project/) on Google Code and was migrated to GitHub (and Git) after Google Code shut down.
+Este repositório [estava inicialmente](https://code.google.com/p/cmake-maven-project/) no Google Code e foi migrado para o GitHub (e Git) após o Google Code ser encerrado.
 
-## Sample Usage
+## Como usar
 
-### Generate Goal
+### O alvo `generate`
 
     <plugin>
       <groupId>com.googlecode.cmake-maven-project</groupId>
@@ -53,7 +53,7 @@ This repository [originally lived](https://code.google.com/p/cmake-maven-project
       </executions>
     </plugin>
 
-### Compile Goal
+### O alvo `compile`
 
     <plugin>
       <groupId>com.googlecode.cmake-maven-project</groupId>
@@ -83,7 +83,7 @@ This repository [originally lived](https://code.google.com/p/cmake-maven-project
       </executions>
     </plugin>
 
-### Test Goal
+### O alvo `test`
 
     <plugin>
       <groupId>com.googlecode.cmake-maven-project</groupId>
@@ -113,47 +113,51 @@ This repository [originally lived](https://code.google.com/p/cmake-maven-project
       </executions>
     </plugin>
     
-### Examples
+### Exemplos
 
-The following projects contain examples of how to use this plugin:
+O projeto abaixo utiliza este plugin:
 
 [Requirements API](https://bitbucket.org/cowwoc/requirements.java/src/759c13be200744e31f0d3f1c6df5d49ac079dfbf/natives/pom.xml#lines-69)
 
-### Building instructions
+### Instruções de como construir e instalar o plugin no seu repositório Maven local
 
-To build the plugin, run:
+Para construir e instalar, execute na linha de comenado:
 
+```bash
     mvn install
+```
 
-To clean an old build, run:
+Para limpar arquivos temporários após uma construção, rode:
 
+```bash
     mvn clean
+```
 
-By default, Maven will activate the right profile based on your JVM:
+Por padrão, o próprio Maven vai esclher o perfil de arquitetura correto baseado em sua máquina virtual java instalada:
 
 * windows-x86_64
 * linux-x86_64
 * linux-arm_32
 * mac-x86_64
 
-If detection does not work, or you wish to override it then set `-P<profile>`.
+Se esta detecção não funcionar, ou se você quiser sobreescrever o perfil para testar, acescente na linha de comando `-P<profile>`.
 
-For instance, when building for 64-bit Linux machines, use:
+Exemplo, quando queremos construir e instalar o plugin forçando a arquitetura 64-bit em máquina linux, usamos:
 
     mvn -Plinux-x86_64 install
 
-### Using a local CMake installation
+### Usando sua própria instalação CMake da máquina local
 
-Sometimes it is preferable or necessary to use a preexisting CMake installation. cmake.org doesn't provide
-binaries for some platforms, such as Raspberry Pi. In such cases, users can install the binaries themselves
-(typically using package managers like `apt-get`) and point the plugin at them.
+A cada construção, o plugin baixa uma versão do CMake do site original para usar.
+Isso demora e portanto pode ser que voce opter por usar seu CMake instalado na máquina.
+Para fazer uso do cmake local, sete a seguinte propriedade no arquivo `pom.xml` do projeto.
 
-1. Set `${cmake.download}` to `false`.
-2. Optionally set `${cmake.dir}` to the directory containing the binaries (e.g. `/usr/bin`). Otherwise, the
-plugin will expect the binaries to be on the PATH. 
+1. `${cmake.download}` com o valor `false`.
+2. Opcionalmente defina `${cmake.dir}` com o caminho contendo o binário executável do CMake (e.g. `/usr/bin`).
 
-That's it! To learn more about CMake itself, consult the [CMake.org](https://cmake.org/) website.
+É isso! Para aprender CMake recorra ao site original [CMake.org](https://cmake.org/) website.
 
-### License
+### Licença
 
-CMake-Maven-Project is released under an [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+CMake-Maven-Project é feito sob licença [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
