@@ -1,6 +1,6 @@
 # CMake-Maven-Project [![Build Status](https://travis-ci.org/cmake-maven-project/cmake-maven-project.png?branch=master)](https://travis-ci.org/cmake-maven-project/cmake-maven-project)
 
-## Introduction
+## Introdução
 
 Um projeto Maven para o sistema de construção CMake. O CMake pode ser integrado ao seu projeto JAVA JNI através do pom.xml do Maven.
 
