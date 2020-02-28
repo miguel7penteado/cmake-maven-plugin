@@ -2,12 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<!-->
 	<parent>
 		<groupId>org.bitbucket.cowwoc.requirements</groupId>
 		<artifactId>root</artifactId>
 		<version>5.2.3-SNAPSHOT</version>
 	</parent>
+	<-->
+	<groupId>org.bitbucket.cowwoc.requirements</groupId>
 	<artifactId>java</artifactId>
+	<version>5.2.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<build>
@@ -15,7 +19,7 @@
 			<plugin>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>maven_plugin</artifactId>
-				<version>${project.version}</version>
+				<version>5.2.2</version>
 				<executions>
 					<execution>
 						<id>optimize-exceptions</id>
@@ -35,7 +39,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
 				<configuration>
+          <source>1.9</source>
+          <target>1.9</target>
 					<compilerArgs>
 						<arg>-Xdiags:verbose</arg>
 						<arg>-Werror</arg>
@@ -48,6 +55,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.1</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -75,16 +83,16 @@
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
+<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>annotations</artifactId>
-			<version>${project.version}</version>
+			<version>5.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>natives</artifactId>
-			<version>${project.version}</version>
+			<version>5.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.bitbucket.cowwoc</groupId>
@@ -94,12 +102,13 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
+			<version>1.7.30</version>
 		</dependency>
 		<dependency>
 			<groupId>org.bitbucket.cowwoc.pouch</groupId>
 			<artifactId>pouch</artifactId>
-			<version>${pouch.version}</version>
+			<version>1.14</version>
 		</dependency>
 	</dependencies>
 </project>
+
